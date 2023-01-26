@@ -1,0 +1,27 @@
+
+// customer queries
+SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.gender AS customers_gender, customers.age AS customers_age, customers.category AS customers_category, customers.date_created AS customers_date_created
+FROM customers
+
+
+
+
+
+
+
+
+
+SELECT * FROM public.customers c
+JOIN public.purchases p ON p.owner_id = c.id
+WHERE c.id = 5
+
+SELECT * FROM public.purchases p
+WHERE p.owner_id IS NULL
+
+
+SELECT * FROM public.customers
+ORDER BY id ASC LIMIT 100
+
+SELECT * FROM public.purchases
+ORDER BY id ASC LIMIT 100
+
