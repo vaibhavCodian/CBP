@@ -74,5 +74,5 @@ async def get_top(
     df['Sales'] = df['quantity'] * df['price']
 
 
-    Top_Selling = df.groupby('name').sum()['Sales'].sort_values(ascending=False).head(5).to_json()
+    Top_Selling = df.groupby('name').sum()['Sales'].sort_values(ascending=False).head(5).to_dict()
     return Top_Selling
