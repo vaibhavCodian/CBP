@@ -62,3 +62,17 @@ async def get_analytics(
         "Sales_Month": Sales_Month,
         "Top_Selling": Top_Selling
     }
+
+
+@router.get("/top")
+async def get_top(
+):
+    df = pd.read_sql_query('SELECT * FROM public.purchases', con=database.engine)
+    # Feature Generation
+    df['Month'] = pd.to_datetime(df['date_created']).dt.month
+    df['Year'] = pd.to_datetime(df['date_created']).dt.year
+    df['Sales'] = df['quantity'] * df['price']
+
+
+    Top_Selling = df.groupby('name').sum()['Sales'].sort_values(ascending=False).head(5).to_json()
+    return Top_Selling
