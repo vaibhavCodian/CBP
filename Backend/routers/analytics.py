@@ -54,7 +54,7 @@ async def get_analytics(
     Predicted_Sales = forecaster.predict(1).tolist()[0]
     Avg_Sales = df.groupby('Month').sum()['Sales'].mean()
     Sales_Month = df.groupby(['Year', 'Month']).sum()['Sales'][-1:].tolist()[0]
-    Top_Selling = df.groupby('name').sum()['Sales'].sort_values(ascending=False).head(5).to_json()
+    Top_Selling = df.groupby('name').sum()['Sales'].sort_values(ascending=False).head(5).to_dict()
     return {
         "Total_Sales": Total_Sales,
         "Predicted_Sales": Predicted_Sales,

@@ -21,20 +21,20 @@ app.add_middleware(
 )
 
 
-# def custom_openapi():
-#     if app.openapi_schema:
-#         return app.openapi_schema
-#     openapi_schema = get_openapi(
-#         title="Consumer Behavior Prediction Platfrom Api ",
-#         version="0.0.2",
-#         description="This is a very custom OpenAPI schema",
-#         routes=app.routes,
-#     )
-#     app.openapi_schema = openapi_schema
-#     return app.openapi_schema
-#
-#
-# app.openapi = custom_openapi
+def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
+    openapi_schema = get_openapi(
+        title="Consumer Behavior Prediction Platfrom Api ",
+        version="0.0.2",
+        description="API Documentation For Consumer Behavior Prediction Platform",
+        routes=app.routes,
+    )
+    app.openapi_schema = openapi_schema
+    return app.openapi_schema
+
+
+app.openapi = custom_openapi
 
 app.include_router(user.router)
 app.include_router(customer.router)
