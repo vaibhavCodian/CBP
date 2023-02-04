@@ -8,7 +8,6 @@ import Backend.database as _database, Backend.models as _models, Backend.schemas
 from Backend.config import settings
 
 
-
 async def create_purchase(db: _orm.Session, purchase: _schemas.PurchaseCreate):
     purchase = _models.Purchase(**purchase.dict())
     db.add(purchase)
@@ -16,6 +15,13 @@ async def create_purchase(db: _orm.Session, purchase: _schemas.PurchaseCreate):
     db.refresh(purchase)
     return _schemas.Purchase.from_orm(purchase)
 
+
+async def create_purchase2_gen(db: _orm.Session, purchase: _schemas.PurchaseCreate2):
+    purchase = _models.Purchase(**purchase.dict())
+    db.add(purchase)
+    db.commit()
+    db.refresh(purchase)
+    return _schemas.Purchase.from_orm(purchase)
 
 async def get_purchases( db: _orm.Session):
     purchases = db.query(_models.Purchase).order_by(_models.Purchase.date_created.asc())

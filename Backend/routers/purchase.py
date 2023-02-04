@@ -38,15 +38,8 @@ async def create_purchase2_gen(
     user: _UserSchemas = _fastapi.Depends(_UserService.get_current_user),
     db: _orm.Session = _fastapi.Depends(_UserService.get_db),
 ):
-    # # get customer by email
-    # db_customer = await _CustomerService.get_customer_by_email(purchase.email, db)
-    #
-    # if not db_customer:
-    #     raise _fastapi.HTTPException(status_code=400, detail="Email already in use")
-
-    # purchase.owner_id
     print(purchase)
-    return await _services.create_purchase(db=db, purchase=purchase)
+    return await _services.create_purchase2_gen(db=db, purchase=purchase)
 
 @router.get("/", response_model=List[_schemas.Purchase])
 async def get_purchases(
