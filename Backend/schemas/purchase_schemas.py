@@ -20,6 +20,10 @@ class PurchaseCreate(_PurchaseBase):
     pass
 
 
+class PurchaseCreate2(_PurchaseBase):
+    date_created: _dt.datetime
+
+
 class Purchase(_pydantic.BaseModel):
     id: int
     name: str

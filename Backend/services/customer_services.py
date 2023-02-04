@@ -17,6 +17,15 @@ async def create_customer(db: _orm.Session, customer: _schemas.CustomerCreate):
     return _schemas.Customer.from_orm(customer)
 
 
+async def create_customer2gen(db: _orm.Session, customer: _schemas.CustomerCreate2):
+    customer = _models.Customer(**customer.dict())
+    print(str(db.add(customer)))
+    db.commit()
+    db.refresh(customer)
+
+    return _schemas.Customer.from_orm(customer)
+
+
 async def get_customers( db: _orm.Session):
     customers = db.query(_models.Customer)
     print(str(customers))

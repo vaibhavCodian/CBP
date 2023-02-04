@@ -1,18 +1,21 @@
+import datetime
 import datetime as _dt
 import pydantic as _pydantic
 
 
 class _CustomerBase(_pydantic.BaseModel):
     name: str
-    email: str
-    age: int
-    gender: str
-    category: str
+    email: _pydantic.EmailStr
+    age: int = 20
+    gender: str = 'Male'
+    category: str = 'Unidentified'
 
 
 class CustomerCreate(_CustomerBase):
     pass
 
+class CustomerCreate2(_CustomerBase):
+    date_created: _dt.datetime
 
 class Customer(_CustomerBase):
     id: int

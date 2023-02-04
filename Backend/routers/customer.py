@@ -24,6 +24,15 @@ async def create_customer(
     return await _services.create_customer(db=db, customer=customer)
 
 
+@router.post("/2", status_code=_fastapi.status.HTTP_201_CREATED)
+async def create_customer2gen(
+    customer: _schemas.CustomerCreate2,
+    user: _UserSchemas = _fastapi.Depends(_UserService.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_UserService.get_db),
+):
+    return await _services.create_customer2gen(db=db, customer=customer)
+
+
 @router.get("/", response_model=List[_schemas.Customer])
 async def get_customers(
     user: _UserSchemas = _fastapi.Depends(_UserService.get_current_user),
