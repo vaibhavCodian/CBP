@@ -38,7 +38,7 @@ async def create_purchase2_gen(
     user: _UserSchemas = _fastapi.Depends(_UserService.get_current_user),
     db: _orm.Session = _fastapi.Depends(_UserService.get_db),
 ):
-    print(purchase)
+    print(purchase.dict())
     return await _services.create_purchase2_gen(db=db, purchase=purchase)
 
 @router.get("/", response_model=List[_schemas.Purchase])
