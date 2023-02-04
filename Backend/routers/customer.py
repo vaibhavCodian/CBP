@@ -30,6 +30,7 @@ async def create_customer2gen(
     user: _UserSchemas = _fastapi.Depends(_UserService.get_current_user),
     db: _orm.Session = _fastapi.Depends(_UserService.get_db),
 ):
+    print(customer)
     return await _services.create_customer2gen(db=db, customer=customer)
 
 
