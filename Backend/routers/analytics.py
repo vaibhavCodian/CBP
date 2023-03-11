@@ -93,12 +93,10 @@ async def get_customer_analytics(
     age_group = customer_df.groupby('age').sum(numeric_only=True)['id'].sort_values(ascending=False).head(5).to_dict()
 
     return {
-
         "Total_Customer": total_customer,
         "New_Customer": new_customers,
         "Customer_Per_Year": customer_per_year,
         "Age_Group": age_group
-
     }
 
 
