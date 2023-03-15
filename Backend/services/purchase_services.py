@@ -23,6 +23,7 @@ async def create_purchase2_gen(db: _orm.Session, purchase: _schemas.PurchaseCrea
     db.refresh(purchase)
     return _schemas.Purchase.from_orm(purchase)
 
+
 async def get_purchases( db: _orm.Session):
     purchases = db.query(_models.Purchase).order_by(_models.Purchase.date_created.desc()).limit(1000)
     return list(map(_schemas.Purchase.from_orm, purchases))
