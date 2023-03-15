@@ -4,6 +4,7 @@ import pydantic as _pydantic
 
 
 class _CustomerBase(_pydantic.BaseModel):
+
     name: str
     email: _pydantic.EmailStr
     age: int = 20

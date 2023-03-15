@@ -10,7 +10,7 @@ from routers import customer, user, purchase
 
 app = _fastapi.FastAPI()
 
-origins = ["*"]
+origins = ["https://cbp-tenant.vercel.app/"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,6 +18,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"]
 )
 
 
