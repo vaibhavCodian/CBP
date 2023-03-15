@@ -27,7 +27,7 @@ async def create_customer2gen(db: _orm.Session, customer: _schemas.CustomerCreat
 
 
 async def get_customers( db: _orm.Session):
-    customers = db.query(_models.Customer)
+    customers = db.query(_models.Customer).limit(200)
     print(str(customers))
     return list(map(_schemas.Customer.from_orm, customers))
 
